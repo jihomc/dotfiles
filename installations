@@ -15,3 +15,5 @@ ZSH Installations:
 Powerline Fonts for agnoster theme
 sudo apt-get install fonts-powerline
 
+xmodmap
+run the command xmodmap ~/.xmodmap to set CAPS_LOCK -> control mapping
