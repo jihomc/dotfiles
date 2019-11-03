@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ZSH Installation
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -9,3 +10,9 @@ TMUX Installation
 sudo apt install tmux
 
 
+=======
+ZSH Installations:
+
+Powerline Fonts for agnoster theme
+sudo apt-get install fonts-powerline
+>>>>>>> 9e77d972e2adc1fd050b34c5fae3d762722894df
