@@ -17,3 +17,11 @@ sudo apt-get install fonts-powerline
 
 xmodmap
 run the command xmodmap ~/.xmodmap to set CAPS_LOCK -> control mapping
+
+Clipboard xclip or xsel
+
+sudo apt install xclip xsel
+vim ~/.zshrc
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
