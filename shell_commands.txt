@@ -1,0 +1,4 @@
+# Useful Commands
+
+# List of available variables
+printenv | less
