@@ -1,61 +1,21 @@
+# Installed Programs
 
-ZSH Installation
+# ZSH
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-Powerline Fonts for agnoster theme
+# Powerline Fonts for agnoster theme
 sudo apt-get install fonts-powerline
 
-
-TMUX Installation
+# TMUX Installation
 sudo apt install tmux
 
-
-ZSH Installations:
-
-Powerline Fonts for agnoster theme
-sudo apt-get install fonts-powerline
-
-xmodmap
+# Xmodmap
 run the command xmodmap ~/.xmodmap to set CAPS_LOCK -> control mapping
 
-Clipboard xclip or xsel
-
+# Clipboard xclip or xsel
 sudo apt install xclip xsel
 vim ~/.zshrc
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
-
-# SSH Server
-sudo service ssh status | start 
-sudo systemctl start ssh
-
-verify openssh server is working (netcat)
-nc -v -z ip port
-
-~/.ssh/authorized_keys
-
-# Configuration File - SSH daemon
-sudo vim /etc/ssh/sshd_config
-port number
-restart after making config changes
-
-# SSH Client
-
-ssh-keygen -t rsa / ssh-keygen
-cd ~/.ssh
-
-ssh-copy-id user@host_name
-ssh user@host_name
-ssh -p ## user@host_name
-
-Options
-ssh -p port_number remote_host
-ssh remote_host command_to_run
-
-exit
-
-# SSH public ip
-dig +short myip.opendns.com @resolver1.opendns.com
-76.206.197.84
 
