@@ -1,0 +1,47 @@
+## SSH Server Configuration
+# Enable service SSH 
+sudo systemctl ssh status | start 
+sudo systemctl start ssh
+
+# Verify openssh server is working (netcat)
+nc -v -z ip port
+
+# Get public IP address
+dig +short myip.opendns.com @resolver1.opendns.com
+
+# SSH public keys
+~/.ssh/authorized_keys
+
+# Configuration File - SSH daemon
+sudo vim /etc/ssh/sshd_config
+port number
+# restart after making config changes
+sudo systemctl restart sshd
+
+# Open SSH port using ufw - default port 22
+sudo ufw allow ssh | sudo ufw allow 22/tcp
+sudo ufw status
+sudo ufw enable
+
+# Allow incoming SSH from IP or specific subnets
+sudo ufw allow from {IP} to any port 22
+sudo ufw allow from {IP_SUB/net} to {ssh-server-ip-address} port 22 proto tcp
+
+
+## SSH Client Configuration
+# Generate public private key pair
+ssh-keygen -t rsa / ssh-keygen
+cd ~/.ssh
+
+# Copy public key onto ssh server
+ssh-copy-id -p ## user@host_name 
+ssh user@host_name
+ssh -p ## user@host_name
+
+# Client-side remote ssh session 
+ssh -p port_number remote_host
+ssh remote_host command_to_run
+
+exit
+
+
