@@ -1,10 +1,30 @@
-## SSH Server Configuration
-# Enable service SSH 
-sudo systemctl ssh status | start 
-sudo systemctl start ssh
+## OpenSSH Server Configuration
+# Installation of OpenSSH 
+sudo apt-get install openssh-server openssh-client
 
-# Verify openssh server is working (netcat)
+# Configuration file - sshd_config
+# Defines SSH rules for your SSH server. 
+sudo vim /etc/ssh/sshd_config
+port number
+# Disable root login on SSH server
+#PermitRootLogin
+PermitRootLogin no
+
+# Make a backup copy
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
+
+# After config changes, restart OpenSSH server
+sudo /etc/init.d/ssh restart
+
+# Enable ssh service  
+sudo systemctl [ status | start | restart | stop ] sshd 
+
+# Check whether the service is enabled
+sudo systemctl list-unit-files | grep enabled | grep ssh
+
+# Use netcat to verify openSSH server @localhost is listening on port 22
 nc -v -z ip port
+nc -v -z 127.0.0.1 22
 
 # Get public IP address
 dig +short myip.opendns.com @resolver1.opendns.com
@@ -12,9 +32,6 @@ dig +short myip.opendns.com @resolver1.opendns.com
 # SSH public keys
 ~/.ssh/authorized_keys
 
-# Configuration File - SSH daemon
-sudo vim /etc/ssh/sshd_config
-port number
 # restart after making config changes
 sudo systemctl restart sshd
 
@@ -29,6 +46,10 @@ sudo ufw allow from {IP_SUB/net} to {ssh-server-ip-address} port 22 proto tcp
 
 
 ## SSH Client Configuration
+# Config file - ssh_config
+# Defines SSH rules for clients
+sudo vim /etc/ssh/ssh_config
+
 # Generate public private key pair
 ssh-keygen -t rsa / ssh-keygen
 cd ~/.ssh
