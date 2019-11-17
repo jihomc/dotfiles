@@ -4,6 +4,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/$USER/.oh-my-zsh"
 
+# User specific environment and startup programs
+export PATH=$PATH:$HOME/bin
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -12,6 +15,9 @@ ZSH_THEME="agnoster"
 
 # Terminal
 TERM=xterm
+
+# Xmodmap
+xmodmap ~/.xmodmap
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,3 +111,10 @@ alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias l='ls -l'
+alias la='ls -la'
+
+today() {
+	echo -n "Today's date is: "
+	date +"%A, %B %-d, %Y"
+}
