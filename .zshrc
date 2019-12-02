@@ -7,17 +7,27 @@ export ZSH="/home/$USER/.oh-my-zsh"
 # User specific environment and startup programs
 export PATH=$PATH:$HOME/bin
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+# Set 256 colors explicitly
+export TERM=xterm-256color
+#export TERM=screen-256color
+
+# Set name of the theme to load
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="alanpeabody"
+#ZSH_THEME="muse"
+# ZSH_THEME="Ducula/ducula"
 
 # Terminal
-TERM=xterm
+#TERM=xterm
 
 # Xmodmap
 xmodmap ~/.xmodmap
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -78,9 +88,9 @@ xmodmap ~/.xmodmap
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git chucknorris command-not-found dircycle dirhistory extract jsontools last-working-dir \
-	npm sudo tmux vi-mode colored-man-pages copydir)
+	npm sudo vi-mode colored-man-pages copydir)
 # Other interesting plugins
-# vscode web-search wd
+# vscode web-search wd tmux
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,3 +128,7 @@ today() {
 	echo -n "Today's date is: "
 	date +"%A, %B %-d, %Y"
 }
+
+
+alias PUBLIC_IP="wget http://ipecho.net/plain -O - -q ; echo"
+
