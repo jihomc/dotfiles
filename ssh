@@ -1,4 +1,5 @@
 ## OpenSSH Server Configuration
+
 # Installation of OpenSSH 
 sudo apt-get install openssh-server openssh-client
 
@@ -13,10 +14,7 @@ PermitRootLogin no
 # Make a backup copy
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
 
-# After config changes, restart OpenSSH server
-sudo /etc/init.d/ssh restart
-
-# Enable ssh service  
+# Enable or restart sshd service  
 sudo systemctl [ status | start | restart | stop ] sshd 
 
 # Check whether the service is enabled
@@ -32,20 +30,19 @@ dig +short myip.opendns.com @resolver1.opendns.com
 # SSH public keys
 ~/.ssh/authorized_keys
 
-# restart after making config changes
-sudo systemctl restart sshd
-
 # Open SSH port using ufw - default port 22
 sudo ufw allow ssh | sudo ufw allow 22/tcp
-sudo ufw status
 sudo ufw enable
+sudo ufw status
 
 # Allow incoming SSH from IP or specific subnets
 sudo ufw allow from {IP} to any port 22
 sudo ufw allow from {IP_SUB/net} to {ssh-server-ip-address} port 22 proto tcp
 
 
+
 ## SSH Client Configuration
+
 # Config file - ssh_config
 # Defines SSH rules for clients
 sudo vim /etc/ssh/ssh_config
@@ -64,5 +61,4 @@ ssh -p port_number remote_host
 ssh remote_host command_to_run
 
 exit
-
 
