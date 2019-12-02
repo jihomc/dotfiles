@@ -15,7 +15,7 @@ export TERM=xterm-256color
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="alanpeabody"
 #ZSH_THEME="muse"
-# ZSH_THEME="Ducula/ducula"
+#ZSH_THEME="Ducula/ducula"
 
 # Terminal
 #TERM=xterm
