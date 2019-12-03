@@ -172,17 +172,25 @@ add Control = Control_L
 Add xmodmap to .zshrc to automatically execute when zsh runs.
 
 ```shell
+# Xmodmap
 xmodmap ~/.xmodmap
 ```
 
 
 ### Clipboard xclip or xsel
 
+#### Installation
+
 ```shell
 sudo apt install xclip xsel
-vim ~/.zshrc
+```
+
+#### Configuration
+
+Edit ~/.zshrc to add alias for pbcopy and pbpaste.
+
+```shell
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 ```
-
 
