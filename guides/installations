@@ -37,22 +37,3 @@ vim ~/.zshrc
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
-# SSH client and server
-sudo apt-get install openssh-server openssh-client
-
-# InfluxDB
-# Telegraf
-# Grafana-server
-
-# Nginx
-https://nginx.org/en/linux_packages.html
-sudo apt install curl gnupg2 ca-certificates lsb-release
-# Set up the apt repository for stable packages
-echo "deb http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
-    | sudo tee /etc/apt/sources.list.d/nginx.list
-# Import official nginx signing key for verifcation of packages
-curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -
-sudo apt-key fingerprint ABF5BD827BD9BF62
-#  The output should contain the full fingerprint 573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62
-sudo apt update
-sudo apt install nginx
