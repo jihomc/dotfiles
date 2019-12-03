@@ -1,0 +1,9 @@
+# Useful VIM Commands
+
+# Save a file with sudo
+:w! !sudo tee %
+
+# Enter copy mode, select text to clipboard and paste
+Ctrl-A +[
+spacebar, highlight text, enter
+Ctrl-]
