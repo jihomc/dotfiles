@@ -1,8 +1,11 @@
 # Jihomc's Dotfiles
 
+
 Configurations for a customized zsh environment with tmux and vim 
+
  
 ## Getting Started 
+
 
 ### Prerequisites
 
@@ -17,10 +20,13 @@ These dotfiles contain the following software dependencies:
 * `git`
 * `curl`
 
+
+
+
 ## Installations
 
 
-### Zsh installation
+### Zsh
 
 ```shell
 sudo apt-get update
@@ -28,7 +34,7 @@ sudo apt-get upgrade
 sudo apt-get install zsh
 ```
 
-##### Make zsh the default shell
+Make zsh the default shell
 
 ```shell
 chsh -s $(which zsh)
