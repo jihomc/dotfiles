@@ -19,7 +19,7 @@ These dotfiles contain the following software dependencies:
 
 ## Installations
 
-#### Zsh installation
+### Zsh installation
 
 ```shell
 sudo apt-get update
@@ -34,21 +34,23 @@ chsh -s $(which zsh)
 echo $SHELL
 ```
 
-#### Oh my ZSH
+### Oh my ZSH installation
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-#### Base16 Shell for color themes 
+### Base16-Shell installation
 
-https://github.com/chriskempson/base16-shell
+Base16-Shell enables customizable themes for zsh
 
 ```shell
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 ```
 
-#### Powerline Fonts - for Agnoster theme
+#### Powerline Fonts installation
+
+Powerline Fonts are required for certain oh-my-zsh themes like Agnoster
 
 ```shell
 sudo apt-get install fonts-powerline
