@@ -1,0 +1,25 @@
+# Useful Shell Commands
+
+# List of available variables
+printenv | less
+
+# Disk usage for InfluxDB
+du -sh /var/lib/influxdb/data/<db name>
+
+# Netstat to see connections to a specific port
+sudo netstat -peanut ":80" | less 
+
+# Copy file from local host to remote host via ssh
+cat ~/Downloads/test.py | ssh -p 22 host@ip 'cat -> /tmp/testcopy.py'
+
+# Copy command line text to clipboard
+echo <command> | xclip -selection c
+<<<"!!":q xsel -ib
+
+# Tmux copy mode & paste
+Enter copy mode, select text to clipboard and paste
+Ctrl-A +[
+spacebar, highlight text, enter
+Ctrl-]
+
+
