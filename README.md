@@ -19,6 +19,7 @@ These dotfiles contain the following software dependencies:
 
 ## Installations
 
+
 ### Zsh installation
 
 ```shell
@@ -34,11 +35,13 @@ chsh -s $(which zsh)
 echo $SHELL
 ```
 
-### Oh my ZSH installation
+
+### Oh my Zsh installation
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
+
 
 ### Base16-Shell installation
 
@@ -48,7 +51,8 @@ Base16-Shell enables customizable themes for zsh
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 ```
 
-#### Powerline Fonts installation
+
+### Powerline Fonts installation
 
 Powerline Fonts are required for certain oh-my-zsh themes like Agnoster
 
@@ -56,11 +60,13 @@ Powerline Fonts are required for certain oh-my-zsh themes like Agnoster
 sudo apt-get install fonts-powerline
 ```
 
-#### TMUX installation
+
+### TMUX installation
 
 ```shell
 sudo apt install tmux
 ```
+
 
 ### Xmodmap
 
@@ -72,6 +78,7 @@ Xmodmap is used to map the left control key to caps lock
 xmodmap ~/.xmodmap
 ```
 
+
 ### Clipboard xclip or xsel
 
 ```shell
@@ -80,4 +87,5 @@ vim ~/.zshrc
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 ```
+
 
