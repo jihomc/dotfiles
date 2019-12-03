@@ -3,8 +3,11 @@
 
 Configurations for a customized zsh environment with tmux and vim 
 
+
+
  
 ## Getting Started 
+
 
 
 ### Prerequisites
@@ -26,7 +29,10 @@ These dotfiles contain the following software dependencies:
 ## Installations
 
 
+
 ### Zsh
+
+#### Installation
 
 ```shell
 sudo apt-get update
@@ -34,7 +40,9 @@ sudo apt-get upgrade
 sudo apt-get install zsh
 ```
 
-Make zsh the default shell
+#### Configuration
+
+Make zsh the default shell.
 
 ```shell
 chsh -s $(which zsh)
@@ -42,43 +50,126 @@ echo $SHELL
 ```
 
 
-### Oh my Zsh installation
+### Oh my Zsh 
+
+#### Installation
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
+#### Configuration
 
-### Base16-Shell installation
+Set name of the theme to load in .zshrc
 
-Base16-Shell enables customizable themes for zsh
+```shell
+ZSH_THEME="alanpeabody"
+```
+
+
+### Base16-Shell 
+
+Base16-Shell enables customizable themes for zsh.
+
+#### Installation
 
 ```shell
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 ```
 
+#### Configuration
 
-### Powerline Fonts installation
+Add the following lines to ~/.zshrc
 
-Powerline Fonts are required for certain oh-my-zsh themes like Agnoster
+```shell
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+```
+
+#### Usage
+
+Open a new shell, type `base16_` and hit tab twice to view themes. Press enter to select.
+
+Current theme: outrun-dark
+
+### Powerline Fonts 
+
+Powerline Fonts are required for certain oh-my-zsh themes like Agnoster.
 
 ```shell
 sudo apt-get install fonts-powerline
 ```
 
 
-### TMUX installation
+### TMUX 
+
+#### Installation
 
 ```shell
 sudo apt install tmux
 ```
 
+#### Configuration
+
+##### Configuration highlights, view ~/.tmux.conf to see all configs.
+
+Remap tmux prefix from ctrl+b to ctrl-a.
+
+```shell
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a last-window
+```
+
+Split panes using \ and - instead of defaults.
+
+```shell
+# split panes using \ and -
+bind \ split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+```
+
+Bind prefix + r command to reload tmux config.
+
+```shell
+# reload config file (change file location to your the tmux.conf you want to use)
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+```
+
+#### Usage
+
+How to enter copy mode to highlight text, copy to clipboard, and paste.
+
+```shell
+prefix + [ or ctrl-a + [
+spacebar
+hjkl or arrow keys to highlight text
+enter to copy text
+prefix + ] or ctrl-a + ] to paste
+```
+
 
 ### Xmodmap
 
-Xmodmap is used to map the left control key to caps lock
+Xmodmap is used to remap the keyboard binding for caps lock to ctrl.
 
-#### Add xmodmap command to .zshrc to automatically set the key binding when zsh runs
+#### Configuration
+
+Edit keyboard bindings in  ~/.xmodmap
+
+```shell
+remove Lock = Caps_Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L
+```
+
+Add xmodmap to .zshrc to automatically execute when zsh runs.
 
 ```shell
 xmodmap ~/.xmodmap
