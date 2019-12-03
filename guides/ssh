@@ -1,14 +1,13 @@
 ## OpenSSH Server Configuration
 
-# Installation of OpenSSH 
+# Install OpenSSH 
 sudo apt-get install openssh-server openssh-client
 
-# Configuration file - sshd_config
-# Defines SSH rules for your SSH server. 
+# Configuration file - defines SSH rules for your SSH server.
 sudo vim /etc/ssh/sshd_config
-port number
+define port number
+
 # Disable root login on SSH server
-#PermitRootLogin
 PermitRootLogin no
 
 # Make a backup copy
@@ -41,10 +40,10 @@ sudo ufw allow from {IP_SUB/net} to {ssh-server-ip-address} port 22 proto tcp
 
 
 
+
 ## SSH Client Configuration
 
-# Config file - ssh_config
-# Defines SSH rules for clients
+# Config file - Defines SSH rules for clients
 sudo vim /etc/ssh/ssh_config
 
 # Generate public private key pair
