@@ -1,7 +1,7 @@
 # Jihomc's Dotfiles
 
 
-Configurations for a customized zsh environment with tmux and vim 
+Configurations for a customized zsh environment with tmux and vim for Ubuntu 18.04 LTS 
 
 
 
@@ -15,11 +15,11 @@ Configurations for a customized zsh environment with tmux and vim
 These dotfiles contain the following software dependencies:
 
 * A Unix-like operating system: macOS, Linux, BSD. 
-* [Zsh](https://zsh.org) v5.4.2+  
+* [Zsh](https://zsh.org) 
 * [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 * [base16 shell](https://github.com/chriskempson/base16-shell)
-* Vim 8.0+
-* Tmux 2.6
+* Vim
+* Tmux
 * `git`
 * `curl`
 
@@ -42,7 +42,7 @@ sudo apt-get install zsh
 
 #### Configuration
 
-Make zsh the default shell.
+Make zsh the default shell
 
 ```shell
 chsh -s $(which zsh)
@@ -155,26 +155,16 @@ prefix + ] or ctrl-a + ] to paste
 ```
 
 
-### Xmodmap
+### Keyboard mapping with X using xkb 
 
-Xmodmap is used to remap the keyboard binding for caps lock to ctrl.
-
-#### Configuration
-
-Edit keyboard bindings in  ~/.xmodmap
+Use setxkbmap to remap Caps Lock as an additional Control key for easier tmux prefix execution
 
 ```shell
-remove Lock = Caps_Lock
-keysym Caps_Lock = Control_L
-add Control = Control_L
+setxkbmap -option ctrl:nocaps		# Make Caps Lock a Control key
+setxkbmap -option ctrl:swapcaps		# Swap Left Control and Caps Lock
 ```
 
-Add xmodmap to .zshrc to automatically execute when zsh runs.
 
-```shell
-# Xmodmap
-xmodmap ~/.xmodmap
-```
 
 
 ### Clipboard xclip or xsel
