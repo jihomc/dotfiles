@@ -10,7 +10,9 @@ ssh-add ~/.ssh/id_rsa
 # Add SSH key to Github account
 sudo apt-get install xclip
 xclip -sel clip < ~/.ssh/id_rsa.pub
-
+# Test SSH connection
+ssh -T git@github.com
+> RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
 
 # Show the names of files that changed for the last two commits
 git log --name-status -2
