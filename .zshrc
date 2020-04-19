@@ -87,7 +87,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git chucknorris command-not-found dircycle dirhistory extract jsontools last-working-dir \
+plugins=(git command-not-found dircycle dirhistory extract jsontools last-working-dir \
 	npm sudo vi-mode colored-man-pages copydir)
 # Other interesting plugins
 # vscode web-search wd tmux
