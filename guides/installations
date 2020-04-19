@@ -28,8 +28,8 @@ sudo apt-get install fonts-powerline
 # TMUX Installation
 sudo apt install tmux
 
-# Xmodmap
-run the command xmodmap ~/.xmodmap to set CAPS_LOCK -> control mapping
+# Add Caps Lock as another Control key using xkb 
+setxkbmap -option ctrl:nocaps
 
 # Clipboard xclip or xsel
 sudo apt install xclip xsel

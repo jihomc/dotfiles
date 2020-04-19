@@ -20,9 +20,6 @@ ZSH_THEME="alanpeabody"
 # Terminal
 #TERM=xterm
 
-# Xmodmap
-xmodmap ~/.xmodmap
-
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
