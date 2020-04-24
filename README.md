@@ -14,7 +14,7 @@ Configurations for a customized zsh environment with tmux and vim for Ubuntu 18.
 
 These dotfiles contain the following software dependencies:
 
-* A Unix-like operating system: macOS, Linux, BSD. 
+* Linux: Ubuntu 18.04 LTS 
 * [Zsh](https://zsh.org) 
 * [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 * [base16 shell](https://github.com/chriskempson/base16-shell)
@@ -67,6 +67,7 @@ ZSH_THEME="alanpeabody"
 ```
 
 
+
 ### Base16-Shell 
 
 Base16-Shell enables customizable themes for zsh.
@@ -95,6 +96,58 @@ Open a new shell, type `base16_` and hit tab twice to view themes. Press enter t
 
 Current theme: outrun-dark
 
+
+
+
+### Base16-Vim
+
+Setup Base16 for Vim with vim-plug
+
+#### Installation
+
+```shell
+# Vim (~/.vim/autoload)
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+#### Plugin settings in vim 
+
+Declare list of plugins in Vim config file ~/.vimrc
+
+```shell
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'chriskempson/base16-vim'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+set termguicolors
+colorscheme base16-outrun-dark
+```
+
+Reload the vim configuration file and install plugins
+
+With Vim
+
+```shell
+:source ~/.vimrc
+:PlugInstall
+```
+
+With Terminal
+
+```shell
+vim +PlugInstall
+```
+
+
+
+
+
 ### Powerline Fonts 
 
 Powerline Fonts are required for certain oh-my-zsh themes like Agnoster.
@@ -102,6 +155,8 @@ Powerline Fonts are required for certain oh-my-zsh themes like Agnoster.
 ```shell
 sudo apt-get install fonts-powerline
 ```
+
+
 
 
 ### TMUX 

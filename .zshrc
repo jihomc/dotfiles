@@ -12,10 +12,8 @@ export TERM=xterm-256color
 #export TERM=screen-256color
 
 # Set name of the theme to load
-# ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 ZSH_THEME="alanpeabody"
-#ZSH_THEME="muse"
-#ZSH_THEME="Ducula/ducula"
 
 # Terminal
 #TERM=xterm
@@ -25,12 +23,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -120,12 +112,11 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias l='ls -l'
 alias la='ls -la'
+#alias tmux="TERM=screen-256color-bce tmux"
 
 today() {
 	echo -n "Today's date is: "
 	date +"%A, %B %-d, %Y"
 }
 
-
 alias PUBLIC_IP="wget http://ipecho.net/plain -O - -q ; echo"
-
