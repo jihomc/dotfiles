@@ -1,16 +1,14 @@
 # Jihomc's Dotfiles
 
 
+
+
 Configurations for a customized zsh environment with tmux and vim for Ubuntu 18.04 LTS 
 
-
-
  
-## Getting Started 
 
 
-
-### Prerequisites
+## Environment 
 
 These dotfiles contain the following software dependencies:
 
@@ -19,14 +17,44 @@ These dotfiles contain the following software dependencies:
 * [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 * [base16 shell](https://github.com/chriskempson/base16-shell)
 * Vim
-* Tmux
+* [base16-vim](https://github.com/chriskempson/base16-vim)
+* [Tmux](https://github.com/tmux/tmux)
 * `git`
 * `curl`
+* `xclip`
+* `python-pexpect`
 
 
 
 
-## Installations
+
+## Getting Started 
+
+
+
+
+## Ansible playbook - automated configuration setup 
+
+
+#### On a fresh Ubuntu 18.04 LTS install, run the following commands
+
+
+```shell
+$ sudo apt update
+$ sudo apt install software-properties-common
+$ sudo apt-add-repository --yes --update ppa:ansible/ansible
+$ sudo apt install ansible
+
+git clone https://github.com/jihomc/dotfiles.git
+ansible-playbook dotfiles/ansible/main.yml -K
+```
+
+
+
+
+## Step by step installation
+
+
 
 
 
@@ -70,7 +98,9 @@ ZSH_THEME="alanpeabody"
 
 ### Base16-Shell 
 
+
 Base16-Shell enables customizable themes for zsh.
+
 
 #### Installation
 
@@ -103,6 +133,8 @@ Current theme: outrun-dark
 
 Setup Base16 for Vim with vim-plug
 
+
+
 #### Installation
 
 ```shell
@@ -110,6 +142,7 @@ Setup Base16 for Vim with vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
+
 
 #### Plugin settings in vim 
 
@@ -161,15 +194,16 @@ sudo apt-get install fonts-powerline
 
 ### TMUX 
 
+
+
 #### Installation
 
 ```shell
 sudo apt install tmux
 ```
 
-#### Configuration
 
-##### Configuration highlights, view ~/.tmux.conf to see all configs.
+#### Configuration highlights, view ~/.tmux.conf to see all configs.
 
 Remap tmux prefix from ctrl+b to ctrl-a.
 
@@ -210,6 +244,9 @@ prefix + ] or ctrl-a + ] to paste
 ```
 
 
+
+
+
 ### Keyboard mapping with X using xkb 
 
 Use setxkbmap to remap Caps Lock as an additional Control key for easier tmux prefix execution
@@ -223,6 +260,8 @@ setxkbmap -option ctrl:swapcaps		# Swap Left Control and Caps Lock
 
 
 ### Clipboard xclip or xsel
+
+
 
 #### Installation
 

@@ -1,0 +1,68 @@
+---
+- hosts: localhost
+  become_user: mike
+  become: yes
+
+  tasks:
+  - name: Install base packages (git, zsh, tmux, vim, fonts-powerline, curl, xclip, python-pexpect)
+    apt:
+      name: ['git','zsh','tmux','vim','fonts-powerline','curl','xclip','python-pexpect']
+      state: latest
+    become_user: root
+    become: yes
+
+  - name: Install oh my zsh
+    shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    ignore_errors: yes
+ 
+  - name: Change shell to zsh
+    shell: chsh -s $(which zsh)
+    become_user: root
+    become: yes
+
+  - name: Base16-Shell
+    shell: git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+    ignore_errors: yes
+
+  # Generate SSH keypair for Github
+  - openssh_keypair:
+      path: /home/mike/.ssh/id_ssh_rsa
+      size: 4096
+      comment: 47733808+jihomc@users.noreply.github.com
+
+  - name: Post SSH message
+    debug:
+      msg: Add ssh key in github settings, then test ssh -T git@github.com
+
+  - name: Git clone dotfiles and copy to home folder
+    shell: |
+      git clone https://github.com/jihomc/dotfiles.git ~/dotfiles
+      cd ~/dotfiles
+      cp .zshrc .vimrc .tmux.conf ../
+
+  - name: Set remote git url to ssh
+    shell: git remote set-url origin git@github.com:jihomc/dotfiles.git
+    args:
+      chdir: ~/dotfiles
+
+  - name: Download vim-plug
+    shell: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  - name: Use vim-plug to install base16-vim from .vimrc
+    expect:
+      command: vim +'PlugInstall --sync' +qa
+      responses:
+        (?i)Error*: "Enter"
+    ignore_errors: yes
+
+  - name: Copy base16-vim colors folder to .vim 
+    shell: cp -r ~/.vim/plugged/base16-vim/colors ~/.vim/colors
+
+  - name: Remap Caps_Lock as an additional Control key using xkb
+    shell: setxkbmap -option ctrl:nocaps
+
+  - name: Restart terminal
+    shell: exec zsh
+
+  - name: Log out user
+    shell: gnome-session-quit --no-prompt
