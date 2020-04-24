@@ -29,10 +29,9 @@
       path: /home/mike/.ssh/id_ssh_rsa
       size: 4096
       comment: 47733808+jihomc@users.noreply.github.com
-
-  - name: Post SSH message
-    debug:
-      msg: Add ssh key in github settings, then test ssh -T git@github.com
+  
+  - name: Copy ssh key to clipboard
+    shell: xclip -sel clip < ~/.ssh/id_ssh_rsa.pub
 
   - name: Git clone dotfiles and copy to home folder
     shell: |
@@ -63,6 +62,9 @@
 
   - name: Restart terminal
     shell: exec zsh
+
+  - pause:
+      prompt: "Paste SSH key from clipboard into Github settings, then press ENTER"
 
   - name: Log out user
     shell: gnome-session-quit --no-prompt
