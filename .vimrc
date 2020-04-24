@@ -1,61 +1,35 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+"set background=dark
+"let base16colorspace=256  " Access colors present in 256 colorspace
+set termguicolors 
+colorscheme base16-outrun-dark
 
-" let Vundle manage Vundle, required
-"Plugin 'VundleVim/Vundle.vim'
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-"Plugin 'chriskempson/base16-vim'
+" Declare the list of plugins.
+Plug 'chriskempson/base16-vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+filetype plugin indent on " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
+filetype plugin on
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
+
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-"let base16colorspace=256  " Access colors present in 256 colorspace
-
-"colorscheme base16-default-dark
 
 "Color schemes
 "base16_chalk, base16_darktooth, base16_classic-dark
 "gruvbox-dark-hard, helios, mocha, monokai, nord, ocean
 "oceanicnext, outrun-dark, pop, railscasts, seti, snazzy
 "synth-midnight-dark, woodland, zenburn
-
-"set background=dark
-
-"#if filereadable(expand("~/.vimrc_background"))
-"#  let base16colorspace=256
-"#  source ~/.vimrc_background
-"#endif
