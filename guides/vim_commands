@@ -1,5 +1,8 @@
 # Useful VIM Commands
 
+# Reload Vim
+:source ~/.vimrc
+
 # Save a file with sudo
 :w! !sudo tee %
 
