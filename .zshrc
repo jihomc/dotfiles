@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
+export ZSH="/$HOME/.oh-my-zsh"
 
 # User specific environment and startup programs
 export PATH=$PATH:$HOME/bin
@@ -112,11 +112,9 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias l='ls -l'
 alias la='ls -la'
-#alias tmux="TERM=screen-256color-bce tmux"
+alias lldp="lldpcli show neighbors details | grep -E 'LLDP neighbors|ChassisID|SysName|PortDescr|VLAN'"
 
 today() {
 	echo -n "Today's date is: "
 	date +"%A, %B %-d, %Y"
 }
-
-alias PUBLIC_IP="wget http://ipecho.net/plain -O - -q ; echo"

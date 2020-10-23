@@ -1,15 +1,13 @@
 ---
 - hosts: localhost
-  become_user: mike
+  become_user: mclegg 
   become: yes
 
   tasks:
-  - name: Install base packages (git, zsh, tmux, vim, fonts-powerline, curl, xclip, python-pexpect)
-    apt:
-      name: ['git','zsh','tmux','vim','fonts-powerline','curl','xclip','python-pexpect']
-      state: latest
-    become_user: root
-    become: yes
+  - name: Install base packages (zsh, tmux, vim, lldpd, wget)
+    community.general.homebrew:
+      name: ['zsh','tmux','vim','lldpd','wget']
+      state: present 
 
   - name: Install oh my zsh
     shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -24,14 +22,19 @@
     shell: git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
     ignore_errors: yes
 
+  - name: create .ssh directory
+    file:
+      path: /Users/mclegg/.ssh
+      state: directory
+
   # Generate SSH keypair for Github
   - openssh_keypair:
-      path: /home/mike/.ssh/id_ssh_rsa
+      path: /Users/mclegg/.ssh/id_ssh_rsa
       size: 4096
       comment: 47733808+jihomc@users.noreply.github.com
   
-  - name: Copy ssh key to clipboard
-    shell: xclip -sel clip < ~/.ssh/id_ssh_rsa.pub
+#  - name: Copy ssh key to clipboard
+#    shell: xclip -sel clip < ~/.ssh/id_ssh_rsa.pub
 
   - name: Git clone dotfiles and copy to home folder
     shell: |
@@ -57,14 +60,13 @@
   - name: Copy base16-vim colors folder to .vim 
     shell: cp -r ~/.vim/plugged/base16-vim/colors ~/.vim/colors
 
-  - name: Remap Caps_Lock as an additional Control key using xkb
-    shell: setxkbmap -option ctrl:nocaps
-
   - name: Restart terminal
     shell: exec zsh
+
+  - name: Launch lldpd service
+    shell: brew services start lldpd
+    become: yes
 
   - pause:
       prompt: "Paste SSH key from clipboard into Github settings, then press ENTER"
 
-  - name: Log out user
-    shell: gnome-session-quit --no-prompt
